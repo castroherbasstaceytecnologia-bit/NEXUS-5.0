@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050914"><meta name="description" content="NEXUS 5.0: centro multimedia futurista.">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<title>NEXUS 5.0 | Digital Experience</title>
+</head>
+<body>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="NEXUS inicio"><span class="brand-mark">N5</span><span>NEXUS <b>5.0</b><small>DIGITAL EXPERIENCE</small></span></a>
+  <div class="top-actions"><span class="status"><i></i> SISTEMA ACTIVO</span><button id="installBtn" class="install-btn" hidden>＋ Instalar</button><button id="menuBtn" class="menu-btn" aria-label="Menú">☰</button></div>
+</header>
+<main id="homeView">
+  <section class="hero">
+    <div class="eyebrow"><span></span> NEXT-GEN MULTIMEDIA PLATFORM</div>
+    <h1>Una nueva forma<br>de <span>explorar</span> lo digital.</h1>
+    <p class="hero-copy">Cinco formatos. Una sola experiencia. Bienvenida al centro de control de tus ideas.</p>
+    <div class="hero-meta"><span><b>05</b> MÓDULOS</span><span class="meta-line"></span><span><b>∞</b> POSIBILIDADES</span></div>
+    <div class="orbital" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="core">N<span>5</span></div><div class="orbit-dot"></div></div>
+  </section>
+  <section class="modules-section">
+    <div class="section-heading"><div><div class="eyebrow">TU ESPACIO DE TRABAJO</div><h2>Selecciona un <span>módulo</span></h2></div><span class="module-count">01 — 05</span></div>
+    <div class="module-grid">
+      <button class="module-card" data-module="word"><span class="module-number">01 / DOC</span><span class="module-icon word-icon">W</span><span class="module-title">Word</span><span class="module-desc">Documentos inteligentes</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
+      <button class="module-card" data-module="ppt"><span class="module-number">02 / SLIDE</span><span class="module-icon ppt-icon">P</span><span class="module-title">PowerPoint</span><span class="module-desc">Ideas en movimiento</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
+      <button class="module-card" data-module="pdf"><span class="module-number">03 / FILE</span><span class="module-icon pdf-icon">PDF</span><span class="module-title">PDF</span><span class="module-desc">Lectura y precisión</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
+      <button class="module-card" data-module="image"><span class="module-number">04 / VISUAL</span><span class="module-icon image-icon">◈</span><span class="module-title">Imagen</span><span class="module-desc">Una ventana visual</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
+      <button class="module-card video-card" data-module="video"><span class="module-number">05 / MOTION</span><span class="module-icon video-icon">▶</span><span class="module-title">Video</span><span class="module-desc">Dale vida a la historia</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
+    </div>
+  </section>
+  <section class="bottom-strip"><span class="strip-symbol">✳</span><p><b>Diseñada para explorar.</b> Construida para conectar.</p><span class="version">NEXUS OS / V5.0.1</span></section>
+</main>
+<main id="moduleView" hidden>
+  <button id="backBtn" class="back-btn">← VOLVER AL CENTRO DE CONTROL</button>
+  <section class="viewer-head"><div class="eyebrow" id="viewerEyebrow">MÓDULO 01</div><h1 id="viewerTitle">Documento <span>Word</span></h1><p id="viewerDescription">Vista de demostración.</p></section>
+  <section id="viewerContent" class="viewer-content"></section>
+  <div class="viewer-footer"><span>NEXUS 5.0 / VISUALIZADOR</span><span>CONTENIDO DE DEMOSTRACIÓN</span></div>
+</main>
+<footer><span>© 2026 NEXUS 5.0</span><span>CREADO PARA IR MÁS ALLÁ <b>✳</b></span></footer>
+<script src="script.js"></script>
+</body></html>
