@@ -1,27 +1,107 @@
-const homeView=document.getElementById('homeView'), moduleView=document.getElementById('moduleView');
-const viewerTitle=document.getElementById('viewerTitle'), viewerDescription=document.getElementById('viewerDescription'), viewerEyebrow=document.getElementById('viewerEyebrow'), viewerContent=document.getElementById('viewerContent');
-const modules={
-word:{num:'MÓDULO 01 / DOCUMENTOS',title:'Documento <span>Word</span>',desc:'Una vista previa editorial para explorar el contenido de un documento.',render:()=>`<article class="doc-preview"><div class="doc-kicker">NEXUS 5.0 · DOCUMENTO DE DEMOSTRACIÓN</div><h2>La tecnología que conecta ideas</h2><p>NEXUS 5.0 es un espacio multimedia diseñado para explorar, presentar y compartir información desde una sola interfaz.</p><h3>Objetivo del proyecto</h3><p>Demostrar cómo una aplicación web progresiva puede reunir distintos formatos digitales en una experiencia moderna, accesible y adaptable a distintos dispositivos.</p><h3>Tres pilares de NEXUS</h3><ul><li><b>Accesibilidad:</b> contenido organizado y fácil de encontrar.</li><li><b>Interactividad:</b> cada módulo ofrece una experiencia propia.</li><li><b>Movilidad:</b> acceso desde celular, tableta o computadora.</li></ul><p><i>Proyecto escolar de Tecnología · Versión 5.0</i></p><a class="primary-btn" href="assets/documento-demo.docx" download>↓ Descargar documento DOCX</a></article>`},
-ppt:{num:'MÓDULO 02 / PRESENTACIONES',title:'Presentación <span>PowerPoint</span>',desc:'Recorre las diapositivas con una experiencia de presentación interactiva.',render:()=>{slideIndex=0;return `<div class="slide-stage"><div class="slide" id="slide"></div><div class="slide-controls"><button id="prevSlide">← ANTERIOR</button><span id="slideCounter">01 / 05</span><button id="nextSlide">SIGUIENTE →</button></div></div><div class="pdf-actions"><a class="primary-btn" href="assets/presentacion-demo.pptx" download>↓ Descargar archivo PPTX</a></div>`}},
-pdf:{num:'MÓDULO 03 / LECTURA',title:'Documento <span>PDF</span>',desc:'Vista de lectura del informe de demostración, con opción para abrir o descargar el PDF.',render:()=>`<div class="pdf-frame"><article class="pdf-page"><div class="doc-kicker">NEXUS 5.0 · INFORME DIGITAL</div><h2>La tecnología que conecta ideas</h2><p>Este informe presenta el propósito y las características de NEXUS 5.0, una aplicación web progresiva que reúne documentos, presentaciones, imágenes y video en un único entorno.</p><h3>Funciones principales</h3><p>• Visualización de contenido por módulos<br>• Diseño adaptable a pantallas pequeñas y grandes<br>• Instalación opcional en la pantalla de inicio<br>• Recursos precargados disponibles sin conexión</p><h3>Conclusión</h3><p>Una interfaz bien diseñada facilita el acceso a la información y convierte una tarea escolar en una demostración práctica de tecnologías web modernas.</p></article></div><div class="pdf-actions"><a class="primary-btn" href="assets/informe-demo.pdf" target="_blank" rel="noopener">↗ Abrir PDF completo</a></div>`},
-image:{num:'MÓDULO 04 / VISUALES',title:'Galería <span>Imagen</span>',desc:'Una pieza visual original de NEXUS 5.0.',render:()=>`<div class="image-stage"><img src="assets/imagen-demo.png" alt="Arte digital NEXUS 5.0, con líneas circulares azules sobre fondo oscuro"></div><div class="image-caption">NEXUS VISUAL SYSTEM · ASSET 004</div>`},
-video:{num:'MÓDULO 05 / MOTION',title:'Reproductor <span>Video</span>',desc:'Reproduce el video de demostración integrado en la aplicación.',render:()=>VIDEO_HTML}
+const screens = [...document.querySelectorAll(".screen")];
+const modal = document.getElementById("resource-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalContent = document.getElementById("modal-content");
+let previousScreen = "library";
+
+function goTo(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  screens.forEach(screen => screen.classList.toggle("active", screen === target));
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+document.querySelectorAll("[data-go]").forEach(button => {
+  button.addEventListener("click", () => goTo(button.dataset.go));
+});
+
+const assets = {
+  tools: { name: "Herramientas del proyecto", file: "assets/herramientas.docx", type: "WORD", description: "Documento Word con las herramientas utilizadas." },
+  materials: { name: "Materiales del proyecto", file: "assets/materiales.docx", type: "WORD", description: "Documento Word con los materiales y componentes." },
+  ppt: { name: "Presentación de robótica", file: "assets/presentacion.pptx", type: "PPTX", description: "Diapositivas para la exposición del proyecto." },
+  pdf: { name: "Informe del proyecto", file: "assets/proyecto.pdf", type: "PDF", description: "Documento PDF del proyecto." },
+  image: { name: "Imagen del robot", file: "assets/robot.jpg", type: "IMG", description: "Imagen o fotografía del prototipo." },
+  video: { name: "Demostración del robot", file: "assets/demostracion.mp4", type: "MP4", description: "Video de tu robot en funcionamiento." }
 };
-const slides=[
-['NEXUS 5.0','La tecnología que conecta ideas\nPresentación de demostración'],
-['UN CENTRO MULTIMEDIA','Cinco módulos en una sola aplicación:\nWord · PowerPoint · PDF · Imagen · Video'],
-['DISEÑADO PARA TODOS','Interfaz adaptable a celular, tableta y computadora.\nAcceso desde un enlace web seguro.'],
-['LA EXPERIENCIA PWA','Se puede añadir a la pantalla de inicio.\nLos recursos precargados pueden estar disponibles sin conexión.'],
-['GRACIAS','NEXUS 5.0 · Proyecto escolar de Tecnología']
-];
-let slideIndex=0, currentModule=null;
-const VIDEO_HTML='<video controls playsinline preload="metadata" poster="assets/imagen-demo.png"><source src="assets/video-demo.mp4" type="video/mp4">Tu navegador no admite video MP4.</video>';
-function renderSlide(){const s=slides[slideIndex];document.getElementById('slide').innerHTML=`<div class="slide-label">NEXUS PRESENTS · ${String(slideIndex+1).padStart(2,'0')}</div><h2>${s[0]}</h2><p>${s[1]}</p>`;document.getElementById('slideCounter').textContent=`${String(slideIndex+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;document.getElementById('prevSlide').disabled=slideIndex===0;document.getElementById('nextSlide').disabled=slideIndex===slides.length-1;}
-function openModule(key){const m=modules[key];if(!m)return;currentModule=key;homeView.hidden=true;moduleView.hidden=false;viewerEyebrow.textContent=m.num;viewerTitle.innerHTML=m.title;viewerDescription.textContent=m.desc;viewerContent.innerHTML=m.render();window.scrollTo({top:0,behavior:'smooth'});if(key==='ppt'){renderSlide();document.getElementById('prevSlide').addEventListener('click',()=>{if(slideIndex>0){slideIndex--;renderSlide()}});document.getElementById('nextSlide').addEventListener('click',()=>{if(slideIndex<slides.length-1){slideIndex++;renderSlide()}})}if(key==='video'){const play=document.getElementById('playMotion');if(play)play.addEventListener('click',()=>{document.querySelector('.pulse-core').classList.toggle('playing');play.textContent=play.textContent.includes('Reproducir')?'Ⅱ Pausar animación':'▶ Reproducir animación'});}}
-document.querySelectorAll('[data-module]').forEach(btn=>btn.addEventListener('click',()=>openModule(btn.dataset.module)));
-document.getElementById('backBtn').addEventListener('click',()=>{moduleView.hidden=true;homeView.hidden=false;window.scrollTo({top:0,behavior:'smooth'});currentModule=null});
-document.getElementById('menuBtn').addEventListener('click',()=>{homeView.hidden=false;moduleView.hidden=true;window.scrollTo({top:document.querySelector('.modules-section').offsetTop-30,behavior:'smooth'})});
-let deferredPrompt;const installBtn=document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false});
-installBtn.addEventListener('click',async()=>{if(!deferredPrompt){alert('Si no aparece la instalación, abre el menú del navegador y elige “Instalar aplicación” o “Añadir a pantalla de inicio”.');return}deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true});
-if('serviceWorker' in navigator && location.protocol!=='file:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(err=>console.log('SW:',err)))}
+
+function fileExists(url) {
+  // GitHub Pages is static hosting. A request is made only when the user opens a module.
+  return fetch(url, { method: "HEAD", cache: "no-store" })
+    .then(response => response.ok)
+    .catch(() => false);
+}
+function fileRow(item, key) {
+  return `<div class="file-row"><span class="file-badge">${item.type}</span><div class="file-info"><b>${item.name}</b><small>${item.description}</small></div><button class="file-action" data-open-file="${key}">ABRIR ↗</button></div>`;
+}
+function missingMessage(item) {
+  return `<div class="empty-state"><b>Este archivo todavía no está publicado.</b><br>Coloca tu archivo en la carpeta <code>assets</code> del repositorio y usa exactamente este nombre:<br><code>${item.file}</code><br><br>Después guarda los cambios en GitHub y vuelve a abrir este módulo.</div>`;
+}
+function openModal(key) {
+  previousScreen = document.querySelector(".screen.active")?.id || "library";
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  const all = {
+    word: { title: "DOCUMENTOS WORD", html: `<div class="file-list">${fileRow(assets.tools, "tools")}${fileRow(assets.materials, "materials")}</div><p class="modal-hint">Los archivos se publican en la carpeta <code>assets/</code> del repositorio para que el profesor pueda abrirlos desde cualquier dispositivo.</p>` },
+    ppt: { title: "PRESENTACIÓN POWERPOINT", html: `<div class="file-list">${fileRow(assets.ppt, "ppt")}</div><p class="modal-hint">La presentación se abre o descarga según el dispositivo y las aplicaciones instaladas.</p>` },
+    pdf: { title: "DOCUMENTO PDF", html: `<div id="single-preview">${fileRow(assets.pdf, "pdf")}</div>` },
+    image: { title: "GALERÍA VISUAL", html: `<div id="single-preview">${fileRow(assets.image, "image")}</div>` },
+    video: { title: "VIDEO DEMOSTRATIVO", html: `<div id="single-preview">${fileRow(assets.video, "video")}</div>` }
+  };
+  const selected = all[key];
+  if (!selected) return;
+  modalTitle.textContent = selected.title;
+  modalContent.innerHTML = selected.html;
+  modalContent.querySelectorAll("[data-open-file]").forEach(btn => btn.addEventListener("click", () => openFile(btn.dataset.openFile)));
+}
+async function openFile(key) {
+  const item = assets[key];
+  if (!item) return;
+  const exists = await fileExists(item.file);
+  if (!exists) {
+    modalContent.innerHTML = missingMessage(item);
+    return;
+  }
+  if (key === "pdf") {
+    modalContent.innerHTML = `<iframe class="viewer-frame" src="${item.file}" title="${item.name}"></iframe><p class="modal-hint">Si no se visualiza en tu navegador, <a class="download-link" href="${item.file}" target="_blank" rel="noopener">ABRIR PDF EN OTRA PESTAÑA ↗</a></p>`;
+  } else if (key === "image") {
+    modalContent.innerHTML = `<img class="preview-image" src="${item.file}" alt="${item.name}"><p class="modal-hint">Imagen del proyecto.</p>`;
+  } else if (key === "video") {
+    modalContent.innerHTML = `<video class="preview-video" controls playsinline preload="metadata"><source src="${item.file}" type="video/mp4">Tu navegador no puede reproducir este video.</video><p class="modal-hint">Pulsa reproducir para ver la demostración.</p>`;
+  } else {
+    modalContent.innerHTML = `<div class="empty-state"><b>${item.name}</b><br>El archivo está publicado y listo para abrirse o descargarse.<br><br><a class="download-link" href="${item.file}" target="_blank" rel="noopener">ABRIR / DESCARGAR ARCHIVO ↗</a><p class="modal-hint">Word y PowerPoint se abren con una aplicación compatible instalada en el dispositivo. Para una vista previa en línea, puedes guardar una copia en un servicio compatible de documentos.</p></div>`;
+  }
+}
+function closeModal() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+document.querySelectorAll("[data-resource]").forEach(button => button.addEventListener("click", () => openModal(button.dataset.resource)));
+document.getElementById("close-modal").addEventListener("click", closeModal);
+document.getElementById("modal-back").addEventListener("click", closeModal);
+modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+document.addEventListener("keydown", event => { if (event.key === "Escape") closeModal(); });
+
+let deferredInstallPrompt;
+const installButton = document.getElementById("install-btn");
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  installButton.hidden = false;
+});
+installButton.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) {
+    alert("En tu navegador, abre el menú ⋮ y elige «Instalar aplicación» o «Añadir a pantalla de inicio».");
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  installButton.hidden = true;
+});
+window.addEventListener("appinstalled", () => {
+  installButton.hidden = true;
+});
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+}

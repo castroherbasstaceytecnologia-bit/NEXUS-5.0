@@ -1,44 +1,131 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050914"><meta name="description" content="NEXUS 5.0: centro multimedia futurista.">
-<link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="style.css">
-<title>NEXUS 5.0 | Digital Experience</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050914">
+  <meta name="description" content="NEXUS 5.0 — Feria de Robótica Gestión 2026, Colegio HEIDI.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>NEXUS 5.0 | Feria de Robótica 2026</title>
 </head>
 <body>
-<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-<header class="topbar">
-  <a class="brand" href="#" aria-label="NEXUS inicio"><span class="brand-mark">N5</span><span>NEXUS <b>5.0</b><small>DIGITAL EXPERIENCE</small></span></a>
-  <div class="top-actions"><span class="status"><i></i> SISTEMA ACTIVO</span><button id="installBtn" class="install-btn" hidden>＋ Instalar</button><button id="menuBtn" class="menu-btn" aria-label="Menú">☰</button></div>
-</header>
-<main id="homeView">
-  <section class="hero">
-    <div class="eyebrow"><span></span> NEXT-GEN MULTIMEDIA PLATFORM</div>
-    <h1>Una nueva forma<br>de <span>explorar</span> lo digital.</h1>
-    <p class="hero-copy">Cinco formatos. Una sola experiencia. Bienvenida al centro de control de tus ideas.</p>
-    <div class="hero-meta"><span><b>05</b> MÓDULOS</span><span class="meta-line"></span><span><b>∞</b> POSIBILIDADES</span></div>
-    <div class="orbital" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="core">N<span>5</span></div><div class="orbit-dot"></div></div>
-  </section>
-  <section class="modules-section">
-    <div class="section-heading"><div><div class="eyebrow">TU ESPACIO DE TRABAJO</div><h2>Selecciona un <span>módulo</span></h2></div><span class="module-count">01 — 05</span></div>
-    <div class="module-grid">
-      <button class="module-card" data-module="word"><span class="module-number">01 / DOC</span><span class="module-icon word-icon">W</span><span class="module-title">Word</span><span class="module-desc">Documentos inteligentes</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
-      <button class="module-card" data-module="ppt"><span class="module-number">02 / SLIDE</span><span class="module-icon ppt-icon">P</span><span class="module-title">PowerPoint</span><span class="module-desc">Ideas en movimiento</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
-      <button class="module-card" data-module="pdf"><span class="module-number">03 / FILE</span><span class="module-icon pdf-icon">PDF</span><span class="module-title">PDF</span><span class="module-desc">Lectura y precisión</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
-      <button class="module-card" data-module="image"><span class="module-number">04 / VISUAL</span><span class="module-icon image-icon">◈</span><span class="module-title">Imagen</span><span class="module-desc">Una ventana visual</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
-      <button class="module-card video-card" data-module="video"><span class="module-number">05 / MOTION</span><span class="module-icon video-icon">▶</span><span class="module-title">Video</span><span class="module-desc">Dale vida a la historia</span><span class="module-open">ABRIR MÓDULO ↗</span></button>
-    </div>
-  </section>
-  <section class="bottom-strip"><span class="strip-symbol">✳</span><p><b>Diseñada para explorar.</b> Construida para conectar.</p><span class="version">NEXUS OS / V5.0.1</span></section>
-</main>
-<main id="moduleView" hidden>
-  <button id="backBtn" class="back-btn">← VOLVER AL CENTRO DE CONTROL</button>
-  <section class="viewer-head"><div class="eyebrow" id="viewerEyebrow">MÓDULO 01</div><h1 id="viewerTitle">Documento <span>Word</span></h1><p id="viewerDescription">Vista de demostración.</p></section>
-  <section id="viewerContent" class="viewer-content"></section>
-  <div class="viewer-footer"><span>NEXUS 5.0 / VISUALIZADOR</span><span>CONTENIDO DE DEMOSTRACIÓN</span></div>
-</main>
-<footer><span>© 2026 NEXUS 5.0</span><span>CREADO PARA IR MÁS ALLÁ <b>✳</b></span></footer>
-<script src="script.js"></script>
-</body></html>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" data-go="welcome" aria-label="NEXUS inicio">
+      <span class="brand-mark">N<span>×</span></span>
+      <span><b>NEXUS <em>5.0</em></b><small>ROBOTICS PROJECT SYSTEM</small></span>
+    </a>
+    <span class="live-pill"><i></i> GESTIÓN 2026</span>
+  </header>
+
+  <main>
+    <section class="screen active" id="welcome" aria-labelledby="welcome-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> INNOVACIÓN · INGENIERÍA · FUTURO</div>
+          <h1 id="welcome-title">FERIA DE<br><span>ROBÓTICA</span></h1>
+          <p class="hero-year">GESTIÓN <strong>2026</strong></p>
+          <p class="lead">Ideas que se convierten en tecnología. Tecnología que inspira el futuro.</p>
+          <div class="team-panel">
+            <div class="panel-label">EQUIPO DE DESARROLLO</div>
+            <div class="team-list">
+              <div class="team-member"><span>SC</span><b>Stacey Castro</b></div>
+              <div class="team-member"><span>MA</span><b>Marian Andrade</b></div>
+              <div class="team-member"><span>MS</span><b>Melany Sagredo</b></div>
+            </div>
+          </div>
+          <div class="school-line"><span class="school-icon">⌂</span><div><b>COLEGIO HEIDI</b><small>PRE - PROMO</small></div></div>
+          <button class="primary-btn" data-go="robot">ENTRAR AL SISTEMA <span>↗</span></button>
+        </div>
+        <div class="hero-visual" aria-label="Ilustración tecnológica">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div>
+          <div class="core-glow"></div>
+          <div class="chip">
+            <div class="chip-top"><span>ARDUINO / UNO</span><span class="chip-status">● ONLINE</span></div>
+            <svg viewBox="0 0 300 250" role="img" aria-label="Microcontrolador estilizado">
+              <defs><linearGradient id="board" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#163e69"/><stop offset="1" stop-color="#07172b"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+              <path d="M50 38 H240 L264 62 V188 L240 212 H50 L28 190 V60Z" fill="url(#board)" stroke="#28aaff" stroke-width="2"/>
+              <rect x="92" y="72" width="116" height="102" rx="8" fill="#07101e" stroke="#3bc3ff" stroke-width="2"/>
+              <rect x="110" y="91" width="80" height="64" rx="4" fill="#102e4a" stroke="#4bd2ff"/>
+              <path d="M124 104h52M124 116h36M124 128h44M124 140h28" stroke="#36baff" stroke-width="3" stroke-linecap="round"/>
+              <g stroke="#31bfff" stroke-width="3"><path d="M43 74h25M43 88h25M43 102h25M43 116h25M43 130h25M43 144h25M43 158h25M43 172h25M232 74h25M232 88h25M232 102h25M232 116h25M232 130h25M232 144h25M232 158h25M232 172h25"/></g>
+              <circle cx="70" cy="54" r="5" fill="#8ce7ff" filter="url(#glow)"/><circle cx="229" cy="194" r="5" fill="#8ce7ff" filter="url(#glow)"/>
+              <path d="M150 37V17M150 212v20M29 124H9M264 124h20" stroke="#28aaff" stroke-width="2"/>
+            </svg>
+            <div class="chip-bottom"><span>SMART SOUND SYSTEM</span><span class="pulse-bars"><i></i><i></i><i></i><i></i><i></i></span></div>
+          </div>
+          <div class="float-tag tag-top"><span class="tag-dot"></span> SOUND DETECTED</div>
+          <div class="float-tag tag-bottom"><span class="bolt">ϟ</span> CONTROL INTELIGENTE</div>
+          <div class="visual-caption">PROYECTO DESTACADO <b>01 / 01</b></div>
+        </div>
+      </div>
+      <div class="bottom-note"><span>01</span> PRESENTACIÓN <i></i> NEXUS INTERFACE</div>
+    </section>
+
+    <section class="screen" id="robot" aria-labelledby="robot-title">
+      <button class="back-link" data-go="welcome">← VOLVER A INICIO</button>
+      <div class="section-heading"><div class="eyebrow"><span class="eyebrow-line"></span> PROYECTO DE INNOVACIÓN</div><p class="hero-year">NEXUS LAB / <strong>01</strong></p></div>
+      <div class="robot-layout">
+        <div class="robot-copy">
+          <div class="status-label"><span class="status-dot"></span> SISTEMA ELECTRÓNICO INTERACTIVO</div>
+          <h2 id="robot-title">CONTROL DE<br><span>ILUMINACIÓN</span><br>POR SONIDO</h2>
+          <p class="lead">Una señal acústica se transforma en una acción física: encender o apagar una luz mediante un circuito electrónico inteligente.</p>
+          <div class="description-card"><span class="card-index">01 / DESCRIPCIÓN</span><p>Este proyecto utiliza un Arduino Uno conectado a un sensor de sonido y un módulo relé para controlar un LED de 9 voltios. Cuando el sensor detecta un sonido cercano que supera el umbral configurado, el sistema procesa la señal y cambia el estado de la iluminación.</p></div>
+          <div class="component-chips"><span>ARDUINO UNO</span><span>SENSOR DE SONIDO</span><span>MÓDULO RELÉ</span><span>LED 9 V</span></div>
+          <button class="primary-btn" data-go="library">EXPLORAR DOCUMENTACIÓN <span>↗</span></button>
+        </div>
+        <div class="robot-art">
+          <div class="art-label">FIG. 01 <span>ESQUEMA CONCEPTUAL</span></div>
+          <div class="sound-wave wave-left"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="sensor-orb"><div class="sensor-inner"><div class="sensor-eye"></div><div class="sensor-eye"></div><div class="sensor-mouth"></div></div><span>SOUND SENSOR</span></div>
+          <div class="signal-line"><span>SEÑAL</span></div>
+          <div class="mini-board"><div class="board-led"></div><b>UNO</b><small>MICROCONTROLLER</small><div class="board-pins"></div></div>
+          <div class="light-symbol"><span>ϟ</span><small>LED 9V</small></div>
+          <div class="art-foot"><span>INPUT: AUDIO</span><span>OUTPUT: LIGHT</span></div>
+          <div class="grid-overlay"></div>
+        </div>
+      </div>
+      <div class="bottom-note"><span>02</span> EL PROYECTO <i></i> DETECCIÓN · PROCESAMIENTO · ACCIÓN</div>
+    </section>
+
+    <section class="screen" id="library" aria-labelledby="library-title">
+      <button class="back-link" data-go="robot">← VOLVER AL PROYECTO</button>
+      <div class="library-intro">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> ARCHIVO DIGITAL DEL PROYECTO</div><h2 id="library-title">CENTRO DE<br><span>DOCUMENTACIÓN</span></h2><p>Todo el proyecto, organizado en un solo lugar.</p></div>
+        <div class="library-counter"><strong>05</strong><span>MÓDULOS<br>DISPONIBLES</span></div>
+      </div>
+      <div class="resource-grid">
+        <button class="resource-card" data-resource="word">
+          <span class="resource-number">01</span><span class="resource-icon word-icon">W</span><span class="resource-title">DOCUMENTOS WORD</span><span class="resource-desc">Herramientas y materiales del proyecto</span><span class="resource-meta">2 ARCHIVOS <b>↗</b></span>
+        </button>
+        <button class="resource-card" data-resource="ppt">
+          <span class="resource-number">02</span><span class="resource-icon ppt-icon">P</span><span class="resource-title">PRESENTACIÓN</span><span class="resource-desc">Diapositivas de exposición</span><span class="resource-meta">POWERPOINT <b>↗</b></span>
+        </button>
+        <button class="resource-card" data-resource="pdf">
+          <span class="resource-number">03</span><span class="resource-icon pdf-icon">PDF</span><span class="resource-title">DOCUMENTO PDF</span><span class="resource-desc">Informe y contenido del proyecto</span><span class="resource-meta">LECTURA DIGITAL <b>↗</b></span>
+        </button>
+        <button class="resource-card" data-resource="image">
+          <span class="resource-number">04</span><span class="resource-icon image-icon">▧</span><span class="resource-title">GALERÍA VISUAL</span><span class="resource-desc">Imagen del robot y sus componentes</span><span class="resource-meta">IMAGEN <b>↗</b></span>
+        </button>
+        <button class="resource-card video-card" data-resource="video">
+          <span class="resource-number">05</span><span class="resource-icon video-icon">▶</span><span class="resource-title">VIDEO DEMOSTRATIVO</span><span class="resource-desc">Mira el proyecto en funcionamiento</span><span class="resource-meta">REPRODUCCIÓN INTEGRADA <b>↗</b></span>
+        </button>
+      </div>
+      <div class="library-footer"><span class="footer-mark">N×</span><span>HECHO PARA EXPLORAR LO QUE VIENE.</span><span>HEIDI · PRE-PROMO 2026</span></div>
+      <div class="bottom-note"><span>03</span> ARCHIVO DIGITAL <i></i> 5 MÓDULOS</div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="resource-modal" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header"><div><div class="eyebrow"><span class="eyebrow-line"></span> NEXUS FILE VIEWER</div><h3 id="modal-title">DOCUMENTO</h3></div><button class="close-btn" id="close-modal" aria-label="Cerrar">×</button></div>
+      <div class="modal-content" id="modal-content"></div>
+      <div class="modal-actions"><button class="secondary-btn" id="modal-back">VOLVER A MÓDULOS</button></div>
+    </section>
+  </div>
+  <footer class="site-footer"><span>© 2026 NEXUS 5.0</span><span>DISEÑADO PARA LA FERIA DE ROBÓTICA</span><button id="install-btn" class="install-btn" hidden>＋ INSTALAR APP</button></footer>
+  <script src="script.js"></script>
+</body>
+</html>
